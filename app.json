@@ -1,6 +1,6 @@
 {
-  "name": "Start on Heroku: PHP",
-  "description": "A barebones PHP app that makes use of the Silex web framework",
-  "repository": "https://github.com/heroku/php-getting-started",
+  "name": "Automated Parking",
+  "description": "Esta Aplicación gestiona un prototipo de parqueadero basado en IoT",
+  "repository": "https://github.com/Andresrent/automated-parking",
   "addons": []
 }
