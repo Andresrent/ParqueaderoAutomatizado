@@ -24,7 +24,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/consulta', function() use($app) {
   $app['monolog']->addDebug('logging output.');
-  return ('trabajen en el proecto'));
+  return $app['twig']->render('trabajen en el proecto'));
 });
 
 $app->run();
