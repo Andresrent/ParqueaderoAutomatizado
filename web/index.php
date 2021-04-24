@@ -20,6 +20,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
+
+$app->get('/consulta', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('trabajen en el proyecto');
 });
 
 $app->run();
