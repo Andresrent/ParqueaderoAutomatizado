@@ -28,7 +28,7 @@
   overflow: hidden;
   width: 100px;
   height: 100px;
-  margin: absolute;
+  margin: relative;
   top: 600;
   left: 1200;
   border: 2px solid white;
