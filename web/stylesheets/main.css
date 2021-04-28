@@ -28,9 +28,7 @@
   overflow: hidden;
   width: 100px;
   height: 100px;
-  margin: relative;
-  top: 600;
-  left: 1200;
+  margin: auto;
   border: 2px solid white;
 }
 .jumbotron .lang-logo img {
