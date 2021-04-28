@@ -11,12 +11,12 @@
   background: #7646c1;
 }
 .jumbotron p {
-  color: #d9ccee;
+  color: yellow;
   max-width: 75%;
   margin: 1em auto 2em;
 }
 .jumbotron h1 {
-  font-size: 40px;
+  font-size: 50px;
 }
 .navbar + .jumbotron {
   margin-top: -20px;
@@ -26,12 +26,12 @@
   background: #B01302;
   border-radius: 50%;
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin: auto;
   position: absolute;
   top: 200px;
-  left: 800px;
+  left: 780px;
   border: 2px solid white;
 }
 .jumbotron .lang-logo img {
