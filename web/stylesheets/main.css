@@ -1,5 +1,5 @@
 .jumbotron {
-  background-image: url("https://automated-parking.herokuapp.com/images/fondo-parking.jpg")
+  background-image: url("https://automated-parking.herokuapp.com/images/fondo-parking.jpg");
   color: yellow;
   padding-bottom: 80px;
 }
