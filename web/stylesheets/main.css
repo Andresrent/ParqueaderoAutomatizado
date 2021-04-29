@@ -26,12 +26,12 @@
   background: #B01302;
   border-radius: 50%;
   overflow: hidden;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin: auto;
   position: absolute;
-  top: 150px;
-  left: 150px;
+  top: 100px;
+  left: 100px;
   border: 2px solid white;
 }
 .jumbotron .lang-logo img {
