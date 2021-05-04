@@ -11,7 +11,7 @@
   background: #7646c1;
 }
 .jumbotron p {
-  color: yellow;
+  color: blue;
   max-width: 75%;
   margin: 1em auto 2em;
 }
@@ -30,8 +30,8 @@
   height: 150px;
   margin: auto;
   position: absolute;
-  top: 150px;
-  left: 150px;
+  top: 100px;
+  left: 100px;
   border: 2px solid white;
 }
 .jumbotron .lang-logo img {
