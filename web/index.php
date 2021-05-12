@@ -46,7 +46,11 @@ $app->get('/guardarDato/{potenciometro}', function($potenciometro) use($app) {
 
  	$datetime = date("d/m/Y H:i");
 
- 	return $datetime;
+ 	$datos = array("fecha" => $datetime, "potenciometro" => $potenciometro);
+
+ 	$insertar = pg_insert($conexion,"dato",$datos);
+
+ 	return $insertar;
 
 });
 
