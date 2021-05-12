@@ -44,11 +44,11 @@ $app->get('/consulta', function() use($app) {
 $app->get('/guardarDato/{potenciometro}', function($potenciometro) use($app) {
  	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
 
- 	$datetime = date("d/m/Y H:i");
+ 	$datetime = date("Y-m-d H:i:s");
 
  	$datos = array("fecha" => $datetime, "potenciometro" => $potenciometro);
 
- 	$insertar = pg_insert($conexion,"dato",$datos);
+ 	$insertar = pg_insert($conexion,"datos",$datos);
 
  	return $insertar;
 
