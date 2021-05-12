@@ -32,7 +32,7 @@ $app->get('/consulta', function() use($app) {
 
  	$consulta = pg_query($conexion, "SELECT * FROM menu");
 
- 	$detalle = pg_fetch_row($consulta);
+ 	$detalle = pg_fetch_result($consulta,2,2);
 
  	return $detalle;
 
