@@ -41,17 +41,29 @@ $app->get('/consulta', function() use($app) {
 
 });
 
-$app->get('/guardarDato/{estado}/{node}', function($estado, $node) use($app) {
+$app->get('/guardarDato/{estado}', function($estado) use($app) {
  	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
 
  	$datetime = date("Y-m-d H:i:s");
 
- 	$datos = array("fecha" => $datetime, "estado" => $estado, "node" => $node);
+ 	$datos = array("fecha" => $datetime, "estado" => $estado);
 
  	$insertar = pg_insert($conexion,"plazas",$datos);
 
 
  	return $insertar;
+
+});
+
+$app->get('/guardarDato/{node}', function($node) use($app) {
+ 	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
+
+ 	$datos = array("node" => $node);
+
+ 	$insertar1 = pg_insert($conexion,"plazas",$datos);
+
+
+ 	return $insertar1;
 
 });
 
