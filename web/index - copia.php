@@ -46,10 +46,9 @@ $app->get('/guardarDato/{estado}', function($estado) use($app) {
 
  	$datetime = date("Y-m-d H:i:s");
 
- 	$datos = array("fecha" => $datetime, "estado" => $estado "Node" => $Node);
+ 	$datos = array("fecha" => $datetime, "estado" => $estado);
 
  	$insertar = pg_insert($conexion,"plazas",$datos);
-
 
  	return $insertar;
 
