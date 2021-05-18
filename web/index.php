@@ -51,7 +51,7 @@ $app->get('/guardarDato/{node}/{estado}/{senal}', function($node, $estado,$senal
  					"node" => $node,
  					"senal" => $senal);
 
- 	$insertar = pg_insert($conexion,"plazas",$datos);
+ 	$insertar = pg_insert($conexion,"plazass",$datos);
 
 
  	return $insertar;
