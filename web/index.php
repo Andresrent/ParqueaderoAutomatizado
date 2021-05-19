@@ -71,7 +71,7 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$query = "SELECT * FROM ".$tabla;
  	$consulta = pg_query($query);
  	$datos = pg_fetch_all($consulta);
- 	return $datos;
+ 	return sizeof($datos);
 });
 
 $app->run();
