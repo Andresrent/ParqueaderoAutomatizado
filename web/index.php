@@ -72,7 +72,7 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$consulta = pg_query($conexion, $query);
  	$filas = pg_num_rows($consulta);
  	$respuesta=pg_fetch_all($consulta);
- 	$id=$respuesta[0][0];
+ 	$id=$respuesta[0];
  	return $id;
 
  	$index = $id - 20;
