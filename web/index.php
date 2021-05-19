@@ -71,11 +71,11 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$query = "SELECT * FROM ".$tabla;
  	$consulta = pg_query($conexion, $query);
  	$filas = pg_num_rows($consulta);
-
- 	$datetime = date("Y-m-d 00:01:00");
+ 	$respuesta=pg_fetch_all($consulta)
+ 	$id=$respuesta[0][0];
 
  	if($filas>60){
- 		$query2 = 'DELETE FROM '. $tabla .' WHERE fecha <'.$datetime;
+ 		$query2 = 'DELETE FROM '. $tabla .' WHERE id <'.$id - 20;
  		$consulta2 = pg_query($conexion, $query2);
  		return $consulta2;
  	}
