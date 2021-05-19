@@ -73,7 +73,7 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$filas = pg_num_rows($consulta);
 
  	if($filas>60){
- 		$query2 = 'DELETE FROM '. $tabla .' ORDER BY "fecha" ASC LIMIT 20';
+ 		$query2 = 'DELETE FROM '. $tabla .' LIMIT 20';
  		$consulta2 = pg_query($conexion, $query2);
  		return $consulta2;
  	}
