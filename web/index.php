@@ -70,8 +70,16 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
 
  	$query = "SELECT * FROM ".$tabla;
  	$consulta = pg_query($query);
- 	$datos = pg_fetch_all($consulta);
- 	return sizeof($datos);
+ 	$filas = pg_num_rows($consulta);
+
+ 	if($filas>60){
+ 		$query = "DELETE FROM ". $tabla ." ORDER BY fecha ASC LIMIT 20";
+ 		$consulta = pg_query($query);
+ 		return $consulta;
+ 	}
+ 	else{
+ 		return "Aún no es necesario borrar datos"
+ 	}
 });
 
 $app->run();
