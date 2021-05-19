@@ -14,7 +14,7 @@ $id=$respuesta[0]["id"];
 $index = $id - $datosSalvados;
 
 if($filas>$limiteDB){
-	$query2 = 'DELETE FROM '. $tabla .' WHERE id <='.$index;
+	$query2 = 'DELETE FROM plazas WHERE id <='.$index;
 	$consulta2 = pg_query($conexion, $query2);
 }
 
