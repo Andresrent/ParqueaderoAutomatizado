@@ -68,7 +68,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
 
- 	$query = "SELECT * FROM ".$tabla " ORDER BY id DESC";
+ 	$query = "SELECT * FROM ". $tabla ." ORDER BY id DESC";
  	$consulta = pg_query($conexion, $query);
  	$filas = pg_num_rows($consulta);
  	$respuesta=pg_fetch_all($consulta);
