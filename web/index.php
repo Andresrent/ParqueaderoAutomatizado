@@ -78,7 +78,7 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  		return $consulta;
  	}
  	else{
- 		return "Aún no es necesario borrar datos"
+ 		return "Aún no es necesario borrar datos";
  	}
 });
 
