@@ -11,9 +11,9 @@ $filas = pg_num_rows($consulta);
 $respuesta=pg_fetch_all($consulta);
 $id=$respuesta[0]["id"];
 
-$index = $id - datosSalvados;
+$index = $id - $datosSalvados;
 
-if($filas>limiteDB){
+if($filas>$limiteDB){
 	$query2 = 'DELETE FROM '. $tabla .' WHERE id <='.$index;
 	$consulta2 = pg_query($conexion, $query2);
 }
