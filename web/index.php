@@ -71,10 +71,8 @@ $app->get('/liberarEspacio/{tabla}', function($tabla) use($app) {
  	$query = "SELECT * FROM ".$tabla;
  	$consulta = pg_query($conexion, $query);
  	$filas = pg_num_rows($consulta);
- 	$respuesta=pg_fetch_all($consulta)
+ 	$respuesta=pg_fetch_all($consulta);
  	$id=$respuesta[0][0];
-
- 	return $id;
 
  	if($filas>60){
  		$query2 = 'DELETE FROM '. $tabla .' WHERE id <'.$id - 20;
