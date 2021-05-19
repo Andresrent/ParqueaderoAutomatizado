@@ -61,8 +61,8 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 
  	$query = "SELECT * FROM plazas WHERE node=".$plaza."ORDER BY fecha DESC LIMIT 1";
  	$consulta = pg_query($query);
-
- 	return pg_fetch_row($consulta);
+ 	$datos = pg_fetch_row($consulta);
+ 	return $datos[2];
 });
 
 $app->run();
