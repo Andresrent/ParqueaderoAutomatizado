@@ -82,7 +82,7 @@ $app->post('/guardarTemp', function (Request $request) use ($app) {
  	$datetime = date("Y-m-d H:i:s");
 
  	$datos = array(	"fecha" => $datetime, 
- 					"estado" => $temperatura);
+ 					"temperatura" => $temperatura);
 
  	$insertar = pg_insert($conexion,"temp_data",$datos);
 
