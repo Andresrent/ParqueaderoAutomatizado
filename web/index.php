@@ -56,7 +56,7 @@ $app->get('/guardarDato/{node}/{estado}', function($node, $estado) use($app) {
  	return $insertar;
 });
 
-$app->post('/ordenLed', function (Request $request) use ($app) {
+$app->post('/guardarDato', function (Request $request) use ($app) {
   $estado = $request->get('estado');
   $node = $request->get('node');
 
