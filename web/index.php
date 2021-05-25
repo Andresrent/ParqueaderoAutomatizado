@@ -91,6 +91,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
     return $datos[2];
    }
    if($plaza=="todas"){
+      $estados = array ();
       for($=1;$i<=2;i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
           $consulta = pg_query($query);
