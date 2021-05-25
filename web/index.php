@@ -92,7 +92,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
    }
    if($plaza=="todas"){
       $estados = array();
-      for($i=1;$i<=2;i++){
+      for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
           $consulta = pg_query($query);
           $datos = pg_fetch_row($consulta);
@@ -102,7 +102,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
    }
    if($plaza=="disponibles"){
       $totalDisponible=0;
-      for($i=1;$i<=2;i++){
+      for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
           $consulta = pg_query($query);
           $datos = pg_fetch_row($consulta);
