@@ -91,12 +91,12 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
     return $datos[2];
    }
    if($plaza=="todas"){
-      $estados = array ();
+      $estados = array();
       for($=1;$i<=2;i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
           $consulta = pg_query($query);
           $datos = pg_fetch_row($consulta);
-          $estados[$i]=$datos[2];
+          $estados = array_merge($estados, array($i=>$datos[2]));
       }
       return $estados;
    }
