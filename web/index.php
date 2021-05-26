@@ -101,8 +101,8 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
           $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           $index=$i+1;
-          $estados = array_push($estados, array("plaza"=>$i,
-            "estado"=>$datos[2]));
+          $estados = $estados + array("plaza"=>$i,
+            "estado"=>$datos[2]);
           }
 
           $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
