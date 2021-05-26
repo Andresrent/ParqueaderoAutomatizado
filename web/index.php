@@ -86,7 +86,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 
  	if(($plaza)){
       $query = "SELECT * FROM plazas WHERE node=".$plaza."ORDER BY fecha DESC LIMIT 1";
-    $consulta = pg_query($query);
+    $consulta = pg_query($conexion,$query);
     $datos = pg_fetch_row($consulta);
     return $datos[2];
    }
@@ -94,10 +94,9 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
       $estados = array();
       for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
-          $consulta = pg_query($query);
+          $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           $estados = array_merge($estados, array($i=>$datos[2]));
-
       }
       return $estados;
    }
@@ -105,7 +104,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
       $totalDisponible=0;
       for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
-          $consulta = pg_query($query);
+          $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           if($datos[2]==0){
             $totalDisponible=$totalDisponible+1;
