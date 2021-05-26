@@ -101,7 +101,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
             $consulta = pg_query($conexion,$query);
             $datos = pg_fetch_row($consulta);
             $index=$i+1;
-            array_push($pila, $i, $datos[2]);
+            array_push($estados, $i, $datos[2]);
 
             //$estados = $estados + array("plaza"=>$i,"estado"=>$datos[2]);
           }
