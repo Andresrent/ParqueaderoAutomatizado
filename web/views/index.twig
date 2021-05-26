@@ -8,10 +8,21 @@
     </a>
     <h1>Automated Parking</h1>
     <p>Esta es una aplicacion PHP con el fin de realizar el monitoreo de las plazas de un parquederos en el PCA, publicar los dato en la aplicacion en tiempo real.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://automated-parking.herokuapp.com/consultarPlaza/1"><span class="glyphicon glyphicon-flash"></span> Consulta Plazas</a>
+    <button onclick="consultarDisponibles()" type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-flash"></span> Consulta Plazas</button>
     <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/php-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
   </div>
 </div>
+
+<script>
+function consultarDisponibles() {
+  const Url='https://automated-parking.herokuapp.com/consultarPlaza/disponibles';
+  $.get(Url,function(data,status){
+      console.log(${data})
+  })
+}
+</script>
+
+
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
     To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-php" class="alert-link">Getting Started with PHP on Heroku</a> tutorial.

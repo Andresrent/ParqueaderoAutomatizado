@@ -24,6 +24,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
+  
   return $app['twig']->render('index.twig');
 });
 
@@ -90,7 +91,6 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 
   if($plaza=="todas"){
       $estados = array();
-
       try {
           for($i=1;$i<=2;$i++){
             $query = "SELECT * FROM plazas WHERE node=".$i." ORDER BY fecha DESC LIMIT 1";
@@ -112,9 +112,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
       }
       catch (Exception $e) {
           return $e->getMessage();
-      }
-
-      
+      }      
    }
    elseif($plaza=="disponibles"){
       $totalDisponible=0;
