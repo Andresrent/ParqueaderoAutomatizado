@@ -98,7 +98,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
     }
   }
 
-   if($plaza=="todas"){
+  elseif($plaza=="todas"){
       $estados = array();
 
       try {
@@ -126,7 +126,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 
       
    }
-   if($plaza=="disponibles"){
+   elseif($plaza=="disponibles"){
       $totalDisponible=0;
       for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
@@ -137,6 +137,9 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
           }
       }
       return $totalDisponible;
+   }
+   else{
+    return "No recibí un valor para consultar";
    }
 
 
