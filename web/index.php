@@ -97,12 +97,13 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
 
       try {
           for($i=1;$i<=2;$i++){
-          $query = "SELECT * FROM plazas WHERE node=".$i." ORDER BY fecha DESC LIMIT 1";
-          $consulta = pg_query($conexion,$query);
-          $datos = pg_fetch_row($consulta);
-          $index=$i+1;
-          $estados = $estados + array("plaza"=>$i,
-            "estado"=>$datos[2]);
+            $query = "SELECT * FROM plazas WHERE node=".$i." ORDER BY fecha DESC LIMIT 1";
+            $consulta = pg_query($conexion,$query);
+            $datos = pg_fetch_row($consulta);
+            $index=$i+1;
+            array_push($pila, $i, $datos[2]);
+
+            //$estados = $estados + array("plaza"=>$i,"estado"=>$datos[2]);
           }
 
           $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
