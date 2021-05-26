@@ -110,7 +110,7 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
           $response->setCharset('UTF-8');
           $response->headers->set('Content-Type', 'application/json');
 
-          return $consulta;
+          return $response;
       }
       catch (Exception $e) {
           return $e->getMessage();
