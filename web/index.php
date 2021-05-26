@@ -1,6 +1,8 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 date_default_timezone_set('America/Bogota');
 
 require('../vendor/autoload.php');
@@ -97,6 +99,15 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
           $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           $estados = array_merge($estados, array($i=>$datos[2]));
+
+          $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+
+          $response = new Response();
+          $response->setContent($jsonResult);
+          $response->setCharset('UTF-8');
+          $response->headers->set('Content-Type', 'application/json');
+
+          return $response;
       }
       return $estados;
    }
