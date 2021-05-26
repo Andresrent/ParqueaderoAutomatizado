@@ -5,7 +5,7 @@
 <script >
 function consultarDisponibles() {
   $.get("https://automated-parking.herokuapp.com/consultarPlaza/disponibles",function(data){
-      document.getElementById('demo').innerHTML = data;
+      document.getElementById('plazadDisponiblesHTML').innerHTML = data;
   });
 }
 </script>
@@ -28,7 +28,7 @@ function consultarDisponibles() {
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
     PLAZAS DISPONIBLES: <br><br>
-    <p>Presiona el botón para consultar</p>
+    <p id="plazadDisponiblesHTML">Presiona el botón para consultar</p>
   </div>
   <hr>
   <div class="row">
