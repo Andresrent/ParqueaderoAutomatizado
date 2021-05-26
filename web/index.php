@@ -95,21 +95,21 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
    if($plaza=="todas"){
       $estados = array();
       for($i=1;$i<=2;$i++){
-          $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
+          $query = "SELECT * FROM plazas WHERE node=".$i." ORDER BY fecha DESC LIMIT 1";
           $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           $estados = array_merge($estados, array($i=>$datos[2]));
 
-          $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
-
-          $response = new Response();
-          $response->setContent($jsonResult);
-          $response->setCharset('UTF-8');
-          $response->headers->set('Content-Type', 'application/json');
-
-          return $response;
       }
-      return $estados;
+
+      $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+
+      $response = new Response();
+      $response->setContent($jsonResult);
+      $response->setCharset('UTF-8');
+      $response->headers->set('Content-Type', 'application/json');
+
+      return $response;
    }
    if($plaza=="disponibles"){
       $totalDisponible=0;
