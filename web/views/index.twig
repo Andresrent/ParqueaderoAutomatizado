@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+<script >
+function consultarDisponibles() {
+  $.get("https://automated-parking.herokuapp.com/consultarPlaza/disponibles",function(data){
+      $( ".result" ).html( data );
+  alert( "Load was performed." );
+  });
+}
+</script>
+
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">
@@ -13,14 +23,7 @@
   </div>
 </div>
 
-<script>
-function consultarDisponibles() {
-  const Url='https://automated-parking.herokuapp.com/consultarPlaza/disponibles';
-  $.get(Url,function(data,status){
-      console.log(${data})
-  })
-}
-</script>
+
 
 
 <div class="container">
