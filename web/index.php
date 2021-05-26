@@ -86,7 +86,7 @@ $app->post('/guardarTemp', function (Request $request) use ($app) {
 $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
  	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
 
- 	if(($plaza)){
+ 	if(is_int($plaza)){
       $query = "SELECT * FROM plazas WHERE node=".$plaza."ORDER BY fecha DESC LIMIT 1";
     $consulta = pg_query($conexion,$query);
     $datos = pg_fetch_row($consulta);
