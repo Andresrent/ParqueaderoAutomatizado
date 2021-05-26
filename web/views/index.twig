@@ -5,8 +5,7 @@
 <script >
 function consultarDisponibles() {
   $.get("https://automated-parking.herokuapp.com/consultarPlaza/disponibles",function(data){
-      $( ".result" ).html( data );
-  alert( "Load was performed." );
+      alert(data);
   });
 }
 </script>
