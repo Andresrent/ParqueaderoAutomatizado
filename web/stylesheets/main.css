@@ -1,7 +1,7 @@
 .jumbotron {
   background-image: url("https://automated-parking.herokuapp.com/images/carrosparkin.png");
   color: yellow;
-  padding-bottom: 160px;
+  padding-bottom: 200px;
 }
 .jumbotron .btn-primary {
   background: red;
@@ -30,8 +30,8 @@
   height: 150px;
   margin: auto;
   position: absolute;
-  top: 100px;
-  left: 100px;
+  top: 150px;
+  left: 150px;
   border: 2px solid white;
 }
 .jumbotron .lang-logo img {
