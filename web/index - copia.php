@@ -1,6 +1,8 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 date_default_timezone_set('America/Bogota');
 
 require('../vendor/autoload.php');
@@ -22,6 +24,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
+  
   return $app['twig']->render('index.twig');
 });
 
@@ -84,27 +87,38 @@ $app->post('/guardarTemp', function (Request $request) use ($app) {
 $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
  	$conexion = pg_connect("host=ec2-107-20-153-39.compute-1.amazonaws.com port=5432 dbname=d8r3vjhhkehuv4 user=ybklwjsgmubonm password=9fd44fba109201c501e9ee0bac95f99c73b66dca9f13f0a45c0949f5b0ed9b8a");
 
- 	if(is_int($plaza)){
-      $query = "SELECT * FROM plazas WHERE node=".$plaza."ORDER BY fecha DESC LIMIT 1";
-    $consulta = pg_query($query);
-    $datos = pg_fetch_row($consulta);
-    return $datos[2];
-   }
-   if($plaza=="todas"){
+ 	
+
+  if($plaza=="todas"){
       $estados = array();
-      for($i=1;$i<=2;$i++){
-          $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
-          $consulta = pg_query($query);
-          $datos = pg_fetch_row($consulta);
-          $estados = array_merge($estados, array($i=>$datos[2]));
+      try {
+          for($i=1;$i<=2;$i++){
+            $query = "SELECT * FROM plazas WHERE node=".$i." ORDER BY fecha DESC LIMIT 1";
+            $consulta = pg_query($conexion,$query);
+            $datos = pg_fetch_row($consulta);
+            $index=$i+1;
+            $estado_n=array("plaza"=>$i,"estado"=>$datos[2]);
+            array_push($estados, $estado_n);
+          }
+
+          $jsonResult = json_encode($estados, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+
+          $response = new Response();
+          $response->setContent($jsonResult);
+          $response->setCharset('UTF-8');
+          $response->headers->set('Content-Type', 'application/json');
+
+          return $response;
       }
-      return $estados;
+      catch (Exception $e) {
+          return $e->getMessage();
+      }      
    }
-   if($plaza=="disponibles"){
+   elseif($plaza=="disponibles"){
       $totalDisponible=0;
       for($i=1;$i<=2;$i++){
           $query = "SELECT * FROM plazas WHERE node=".$i."ORDER BY fecha DESC LIMIT 1";
-          $consulta = pg_query($query);
+          $consulta = pg_query($conexion,$query);
           $datos = pg_fetch_row($consulta);
           if($datos[2]==0){
             $totalDisponible=$totalDisponible+1;
@@ -112,6 +126,18 @@ $app->get('/consultarPlaza/{plaza}', function($plaza) use($app) {
       }
       return $totalDisponible;
    }
+   else{
+    try{
+        $query = "SELECT * FROM plazas WHERE node=".$plaza."ORDER BY fecha DESC LIMIT 1";
+        $consulta = pg_query($conexion,$query);
+        $datos = pg_fetch_row($consulta);
+        return $datos[2];
+      }
+      catch (Exception $e) {
+            return "No recibí un valor para consultar. ERROR: " .$e->getMessage();
+      }
+    }
+    
 });
 
 
